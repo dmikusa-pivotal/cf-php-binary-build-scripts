@@ -12,10 +12,10 @@ if [ -f php-$VERSION.tar.bz2 ]; then
 fi
 if [ ! -d php-$VERSION ]; then
     curl -L -o php-$VERSION.tar.bz2 http://us2.php.net/get/php-$VERSION.tar.bz2/from/us3.php.net/mirror
+    tar jxf php-$VERSION.tar.bz2
+    rm php-$VERSION.tar.bz2
 fi
 
-tar jxf php-$VERSION.tar.bz2
-rm php-$VERSION.tar.bz2
 cd php-$VERSION
 
 # Build PHP 5.3
