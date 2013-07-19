@@ -130,6 +130,7 @@ rm -rf php/ include/
 cd ../
 mv php php-$VERSION-bin
 tar czf php-$VERSION-bin.tar.gz php-$VERSION-bin
+shasum php-$VERSION-bin.tar.gz > php-$VERSION-bin.tar.gz.sha1
 
 echo "Done!"
 

@@ -12,13 +12,57 @@ if [ -f php-$VERSION.tar.bz2 ]; then
 fi
 if [ ! -d php-$VERSION ]; then
     curl -L -o php-$VERSION.tar.bz2 http://us2.php.net/get/php-$VERSION.tar.bz2/from/us3.php.net/mirror
+    tar jxf php-$VERSION.tar.bz2
+    rm php-$VERSION.tar.bz2
 fi
 
-tar jxf php-$VERSION.tar.bz2
-rm php-$VERSION.tar.bz2
 cd php-$VERSION
 
-# Build PHP 5.3
+# Build PHP 5.3 w/cgi
+./configure \
+	--prefix=/tmp/staged/app/php \
+	--with-config-file-path=/home/vcap/app/php/etc \
+	--enable-cli \
+	--enable-cgi \
+	--enable-ftp \
+	--enable-sockets \
+	--enable-soap \
+	--enable-fileinfo \
+	--enable-bcmath \
+	--enable-calendar \
+	--with-kerberos \
+	--enable-zip \
+	--with-pear \
+	--with-bz2=shared \
+	--with-curl=shared \
+	--enable-dba=shared \
+	--enable-inifile \
+	--enable-flatfile \
+	--with-cdb \
+	--with-gdbm \
+	--with-mcrypt=shared \
+	--with-mhash=shared \
+	--with-mysql=mysqlnd \
+	--with-mysqli=mysqlnd \
+	--with-pdo-mysql=mysqlnd \
+	--with-gd=shared \
+	--with-pdo-pgsql=shared \
+	--with-pgsql=shared \
+	--with-pspell=shared \
+	--with-gettext=shared \
+	--with-gmp=shared \
+	--with-imap=shared \
+	--with-imap-ssl=shared \
+	--with-ldap=shared \
+	--with-ldap-sasl \
+	--enable-mbstring \
+	--enable-mbregex \
+	--enable-exif=shared \
+	--with-openssl=shared
+make
+make install
+
+# Build PHP 5.3 w/ fpm
 ./configure \
 	--prefix=/tmp/staged/app/php \
 	--with-config-file-path=/home/vcap/app/php/etc \
@@ -127,9 +171,10 @@ cd /tmp/staged/app/php
 rm -rf php/ include/
 
 # Build binary
-cd ../
+cd /tmp/staged/app
 mv php php-$VERSION-bin
 tar czf php-$VERSION-bin.tar.gz php-$VERSION-bin
+shasum php-$VERSION-bin.tar.gz > php-$VERSION-bin.tar.gz.sha1
 
 echo "Done!"
 
