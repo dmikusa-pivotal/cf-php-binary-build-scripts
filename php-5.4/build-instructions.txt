@@ -1,0 +1,12 @@
+0.) Updates
+  - aptitue to update system
+  - update php version
+  - update extension versions
+1.) Use config.nice
+2.) make && make install
+3.) copy require-libs to libs directory
+4.) build php-extensions (phpize && ./configure && make && make install)
+5.) Remove include and php dirs ( rm -rf php/ include/)
+6.) mv php php-version-bin
+7.) tar czf php-version-bin.tar.gz php-version-bin
+

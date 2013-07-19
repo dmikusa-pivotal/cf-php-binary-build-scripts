@@ -1,0 +1,16 @@
+0.) Check for updates...
+  - aptitude
+  - apr
+  - apr-util
+  - httpd 2.4.x
+1.) Copy apr and apr-util into httpd-2.4.4/srclib (without version numbers)
+2.) Run ./configure --prefix=/tmp/staged/app/httpd --with-included-apr --enable-mpms-shared='worker event' --enable-mods-shared=reallyall
+3.) make && make install
+4.) Build mod_fcgid - APXS=/tmp/staged/app/httpd/bin/apxs ./configure.apxs && make && make install
+5.) Remove extra directories - rm -rf build cgi-bin/ error/ icons/ include/ man/ manual/ htdocs/
+6.) Remove config - rm -rf conf/extra/* conf/httpd.conf conf/httpd.conf.bak conf/magic conf/original
+7.) Edit path - vi apachectl apr-1-config apu-1-config envvars envvars-std
+                %s/\/tmp\/staged\/app/${HOME}/g
+8.) Edit change single quotes to double quotes for HTTPD variable - vi apachectl
+9.) mv httpd httpd-${version}-bin
+10.) tar czf httpd-${version}-bin.tar.gz httpd-${version}-bin

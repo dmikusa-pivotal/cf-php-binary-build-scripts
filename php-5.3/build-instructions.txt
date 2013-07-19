@@ -1,0 +1,55 @@
+0.) Updates
+  - aptitue to update system
+  - update php version
+  - update extension versions
+1.) Run build.sh <version-num>
+
+
+# Old Instructions, now encapsulated by build.sh
+1.) Use config.nice
+./configure \
+	--prefix=/tmp/staged/app/php \
+	--with-config-file-path=/home/vcap/app/php/etc \
+	--enable-cli \
+	--enable-ftp \
+	--enable-sockets \
+	--enable-soap \
+	--enable-fileinfo \
+	--enable-bcmath \
+	--enable-calendar \
+	--with-kerberos \
+	--enable-zip \
+	--with-pear \
+	--with-bz2=shared \
+	--with-curl=shared \
+	--enable-dba=shared \
+	--enable-inifile \
+	--enable-flatfile \
+	--with-cdb \
+	--with-gdbm \
+	--with-mcrypt=shared \
+	--with-mhash=shared \
+	--with-mysql=mysqlnd \
+	--with-mysqli=mysqlnd \
+	--with-pdo-mysql=mysqlnd \
+	--with-gd=shared \
+	--with-pdo-pgsql=shared \
+	--with-pgsql=shared \
+	--with-pspell=shared \
+	--with-gettext=shared \
+	--with-gmp=shared \
+	--with-imap=shared \
+	--with-imap-ssl=shared \
+	--with-ldap=shared \
+	--with-ldap-sasl \
+	--enable-mbstring \
+	--enable-mbregex \
+	--enable-exif=shared \
+	--with-openssl=shared
+2.) make && make install
+3.) copy require-libs to libs directory
+4.) build php-extensions (phpize && ./configure && make && make install)
+5.) Remove include and php dirs ( rm -rf php/ include/)
+6.) mv php php-version-bin
+7.) tar czf php-version-bin.tar.gz php-version-bin
+
