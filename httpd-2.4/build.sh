@@ -70,6 +70,10 @@ make
 make install
 cd ../
 
+# Copy required libraries
+mkdir /tmp/staged/app/httpd/lib
+cp required-libs/* /tmp/staged/app/httpd/lib
+
 # Remove unnecessary files and config
 cd /tmp/staged/app/httpd
 rm -rf build cgi-bin/ error/ icons/ include/ man/ manual/ htdocs/
