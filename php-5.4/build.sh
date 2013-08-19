@@ -75,7 +75,7 @@ make clean
 ./configure --prefix=/tmp/staged/app/librmq
 make
 make install
-cp /tmp/staged/app/librmq/lib/librabbitmq.so.1 /tmp/staged/app/php-${VERSION}-bin/lib/
+cp /tmp/staged/app/librmq/lib/librabbitmq.so.1 /tmp/staged/app/php-$VERSION-bin/lib/
 cd ../
 
 # build AMQP extension
