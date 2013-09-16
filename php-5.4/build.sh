@@ -11,7 +11,7 @@ if [ -f php-$VERSION.tar.bz2 ]; then
     rm php-$VERSION.tar.bz2
 fi
 if [ ! -d php-$VERSION ]; then
-    curl -L -o php-$VERSION.tar.bz2 http://us2.php.net/get/php-$VERSION.tar.bz2/from/us3.php.net/mirror
+    curl -L -o php-$VERSION.tar.bz2 http://us1.php.net/get/php-$VERSION.tar.bz2/from/us2.php.net/mirror
     tar jxf php-$VERSION.tar.bz2
     rm php-$VERSION.tar.bz2
 fi
@@ -106,7 +106,7 @@ make install
 cd ../
 
 # build redis
-cd redis-2.2.3
+cd redis-2.2.4
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
