@@ -68,7 +68,7 @@ cp required-libs/* /tmp/staged/app/php/lib/
 cd php-extensions
 
 # Build RabbitMQ Libs
-cd rabbitmq-c-0.4.0
+cd rabbitmq-c-0.4.1
 make clean
 ./configure --prefix=/tmp/staged/app/librmq
 make
@@ -86,7 +86,7 @@ make install
 cd ../
 
 # build mongo
-cd mongo-1.4.3
+cd mongo-1.4.4
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
