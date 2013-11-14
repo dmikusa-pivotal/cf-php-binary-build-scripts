@@ -86,7 +86,7 @@ make install
 cd ../
 
 # build mongo
-cd mongo-1.4.4
+cd mongo-1.4.5
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
