@@ -29,7 +29,7 @@ make install
 cd ../
 
 # Build mod_fcgid
-cd mod_fcgid-2.3.7
+cd mod_fcgid-2.3.9
 make clean
 APXS=/tmp/staged/app/httpd/bin/apxs ./configure.apxs 
 make
