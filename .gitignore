@@ -1,4 +1,4 @@
-httpd-2.2/mod_fcgid-2.3.7
+httpd-2.2/mod_fcgid-2.3.*
 httpd-2.2/httpd-2.2.*
 httpd-2.4/apr-1.4.8
 httpd-2.4/apr-util-1.5.2
