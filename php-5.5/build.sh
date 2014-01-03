@@ -57,7 +57,7 @@ cd php-$VERSION
 	--enable-exif=shared \
 	--with-openssl=shared \
 	--enable-fpm
-make
+make -j 3
 make install
 cd ../
 
@@ -71,7 +71,7 @@ cd php-extensions
 cd rabbitmq-c-0.4.1
 make clean
 ./configure --prefix=/tmp/staged/app/librmq
-make
+make -j 3
 make install
 cp /tmp/staged/app/librmq/lib/librabbitmq.so.1 /tmp/staged/app/php/lib/
 cd ../
@@ -81,7 +81,7 @@ cd amqp-1.2.0
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config --with-librabbitmq-dir=/tmp/staged/app/librmq
-make
+make -j 3
 make install
 cd ../
 
@@ -90,7 +90,7 @@ cd mongo-1.4.5
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
@@ -99,7 +99,7 @@ cd redis-2.2.4
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
@@ -108,7 +108,7 @@ cd xdebug-2.2.3
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 

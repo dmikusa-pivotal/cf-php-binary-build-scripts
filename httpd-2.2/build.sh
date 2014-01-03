@@ -24,7 +24,7 @@ cd httpd-$VERSION
 	--enable-mods-shared=all \
 	--enable-so \
 	--with-mpm=worker
-make
+make -j 3
 make install
 cd ../
 
@@ -32,7 +32,7 @@ cd ../
 cd mod_fcgid-2.3.9
 make clean
 APXS=/tmp/staged/app/httpd/bin/apxs ./configure.apxs 
-make
+make -j 3
 make install
 cd ../
 
