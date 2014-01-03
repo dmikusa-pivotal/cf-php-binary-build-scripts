@@ -10,10 +10,10 @@ fi
 cd build-requirements
 
 # Build apr
-cd apr-1.4.8
+cd apr-1.5.0
 make clean
-./configure --prefix=/tmp/staged/app/libapr-1.4.8
-make
+./configure --prefix=/tmp/staged/app/libapr-1.5.0
+make -j 3
 make install
 cd ../
 
@@ -22,16 +22,16 @@ cd apr-iconv-1.2.1
 make clean
 ./configure \
 	--prefix=/tmp/staged/app/libapr-iconv-1.2.1 \
-	 --with-apr=/tmp/staged/app/libapr-1.4.8/bin/apr-1-config
-make
+	 --with-apr=/tmp/staged/app/libapr-1.5.0/bin/apr-1-config
+make -j 3
 make install
 cd ../
 
 # Build apr-util
-cd apr-util-1.5.2
+cd apr-util-1.5.3
 make clean
 ./configure \
-	--prefix=/tmp/staged/app/libapr-util-1.5.2 \
+	--prefix=/tmp/staged/app/libapr-util-1.5.3 \
 	--with-iconv=/tmp/staged/app/libapr-iconv-1.2.1 \
 	--with-crypto \
 	--with-openssl \
@@ -39,8 +39,8 @@ make clean
 	--with-pgsql \
 	--with-gdbm \
 	--with-ldap \
-	--with-apr=/tmp/staged/app/libapr-1.4.8
-make
+	--with-apr=/tmp/staged/app/libapr-1.5.0
+make -j 3
 make install
 cd ../
 
@@ -62,17 +62,19 @@ cd httpd-$VERSION
 # Build HTTPD 2.4
 ./configure \
 	--prefix=/tmp/staged/app/httpd \
-	--with-apr=/tmp/staged/app/libapr-1.4.8 \
-	--with-apr-util=/tmp/staged/app/libapr-util-1.5.2 \
+	--with-apr=/tmp/staged/app/libapr-1.5.0 \
+	--with-apr-util=/tmp/staged/app/libapr-util-1.5.3 \
 	--enable-mpms-shared='worker event' \
 	--enable-mods-shared=reallyall
-make
+make -j 3
 make install
 cd ../
 
 # Copy required libraries
 mkdir /tmp/staged/app/httpd/lib
-cp required-libs/* /tmp/staged/app/httpd/lib
+cp /tmp/staged/app/libapr-1.5.0/lib/libapr-1.so.0 /tmp/staged/app/httpd/lib
+cp /tmp/staged/app/libapr-iconv-1.2.1/lib/libapriconv-1.so.0 /tmp/staged/app/httpd/lib
+cp /tmp/staged/app/libapr-util-1.5.3/lib/libaprutil-1.so.0 /tmp/staged/app/httpd/lib
 
 # Remove unnecessary files and config
 cd /tmp/staged/app/httpd
