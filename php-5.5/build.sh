@@ -52,6 +52,7 @@ cd php-$VERSION
 	--with-imap-ssl=shared \
 	--with-ldap=shared \
 	--with-ldap-sasl \
+	--with-zlib \
 	--enable-mbstring \
 	--enable-mbregex \
 	--enable-exif=shared \
