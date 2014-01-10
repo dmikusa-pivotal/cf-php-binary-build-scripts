@@ -59,7 +59,7 @@ cd php-$VERSION
 	--enable-mbregex \
 	--enable-exif=shared \
 	--with-openssl=shared
-make
+make -j 3
 make install
 
 # Build PHP 5.3 w/ fpm
@@ -98,12 +98,13 @@ make install
 	--with-imap-ssl=shared \
 	--with-ldap=shared \
 	--with-ldap-sasl \
+	--with-zlib \
 	--enable-mbstring \
 	--enable-mbregex \
 	--enable-exif=shared \
 	--with-openssl=shared \
 	--enable-fpm
-make
+make -j 3
 make install
 cd ../
 
@@ -117,7 +118,7 @@ cd php-extensions
 cd rabbitmq-c-rabbitmq-c-v0.3.0
 make clean
 ./configure --prefix=/tmp/staged/app/librmq
-make
+make -j 3
 make install
 cd ../
 
@@ -126,7 +127,7 @@ cd amqp-1.2.0
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config --with-librabbitmq-dir=/tmp/staged/app/librmq
-make
+make -j 3
 make install
 cd ../
 
@@ -135,7 +136,7 @@ cd APC-3.1.9
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
@@ -144,7 +145,7 @@ cd mongo-1.4.1
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
@@ -153,7 +154,7 @@ cd redis-2.2.3
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
@@ -162,7 +163,7 @@ cd xdebug-2.2.3
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
-make
+make -j 3
 make install
 cd ../
 
