@@ -71,7 +71,7 @@ cp required-libs/* /tmp/staged/app/php/lib/
 cd php-extensions
 
 # Build RabbitMQ Libs
-cd rabbitmq-c-0.4.1
+cd rabbitmq-c-0.5.0
 make clean
 ./configure --prefix=/tmp/staged/app/librmq
 make -j 3
@@ -80,7 +80,7 @@ cp /tmp/staged/app/librmq/lib/librabbitmq.so.1 /tmp/staged/app/php/lib/
 cd ../
 
 # build AMQP extension
-cd amqp-1.2.0
+cd amqp-1.4.0
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config --with-librabbitmq-dir=/tmp/staged/app/librmq
@@ -98,7 +98,7 @@ make install
 cd ../
 
 # build mongo
-cd mongo-1.4.5
+cd mongo-1.5.2
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
@@ -107,7 +107,7 @@ make install
 cd ../
 
 # build redis
-cd redis-2.2.4
+cd redis-2.2.5
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
@@ -116,7 +116,7 @@ make install
 cd ../
 
 # build xdebug
-cd xdebug-2.2.3
+cd xdebug-2.2.5
 make clean
 /tmp/staged/app/php/bin/phpize
 ./configure --with-php-config=/tmp/staged/app/php/bin/php-config
